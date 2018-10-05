@@ -1,9 +1,10 @@
 import React from "react";
+import "./Navbar.css";
 
 const Navbar = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center">
     <a className="navbar-brand" href="/">
-      React 
+      Article Search
     </a>
   </nav>
 );

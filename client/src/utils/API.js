@@ -3,7 +3,7 @@ import axios from "axios";
 // const URL ="";
 // const KEY = "";
 
-const URL = "";
+const URL = process.env.REACT_APP_DB_URL + process.env.REACT_APP_API_KEY + '&q=';
 
 export default {
   Find: function(term, startYear, endYear) {

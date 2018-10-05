@@ -74,11 +74,11 @@ class Articles extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-6">
+      <Container d-flex justify-content-center>
+      
+      <Col size="col-centered">
             <Jumbotron>
-            <h1>Article Finder</h1>
+            <h1>Find Articles</h1>
             </Jumbotron>
             <form>
               <Input
@@ -105,9 +105,9 @@ class Articles extends Component {
               >
                 Search Articles
               </Button>
-            </form>
-          </Col>
-          <Col size="md-6">
+            </form></Col>
+     <br/>
+     <Col size="col-centered">
             <Jumbotron>
               <h1>Search Results</h1>
             </Jumbotron>
@@ -115,17 +115,18 @@ class Articles extends Component {
           <List>
                 {this.state.searchResults.map(article => (
                   <ListItem key={article._id}>
-                       <strong> <a href={article.web_url}> {article.headline.main}</a></strong> <br/>
+                       <strong> <a href={article.web_url}> {article.headline.main.toUpperCase()}</a></strong> <br/>
                        {article.snippet}<br/>
                        Published On: {article.pub_date}
                        
-             <DeleteBtn onClick={() => this.Deleted(article._id)} />
+             {/* <DeleteBtn onClick={() => this.Deleted(article._id)} /> */}
 
-                    {/* <SaveBtn onClick={() => this.Saved(
-                 
-                      article.pub_date,
-                      // summary: article.snippet
-                    )} /> */}
+                 <SaveBtn onClick={() => this.Saved({
+                 title: article.headline.main,
+                 url: article.web_url,
+               date: article.pub_date
+              
+               })} />
 
                   </ListItem>
                 ))}
@@ -134,7 +135,34 @@ class Articles extends Component {
 <h3>No Results to Display</h3>
             )}
           </Col>
-        </Row>
+          <Col size="col-centered">
+            <Jumbotron>
+              <h1>Saved Articles</h1>
+            </Jumbotron>
+            {this.state.articleSaved.length ? (
+          <List>
+                {this.state.articleSaved.map(article => (
+                  <ListItem key={article._id}>
+                       <strong> <a href={article.url}> {article.title.toUpperCase()}</a></strong> <br/>
+                       {/* {article.snippet}<br/> */}
+                       Published On: {article.date}
+                       
+             <DeleteBtn onClick={() => this.Deleted({id: article._id} )}/>
+
+                 {/* <SaveBtn onClick={() => this.Saved({
+                 title: article.headline.main,
+                 url: article.web_url,
+               date: article.pub_date
+              
+               })} /> */}
+
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+<h3>No Results to Display</h3>
+            )}
+            </Col>
       </Container>
     );
   }
