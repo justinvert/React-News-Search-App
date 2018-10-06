@@ -19,7 +19,7 @@ export default {
     return axios.post("/api/articles", data);
   },
   Deleted: function(id) {
-    return axios.delete("/api/articles" + id);
+    return axios.delete("/api/articles/" + id);
   }
 
 };
