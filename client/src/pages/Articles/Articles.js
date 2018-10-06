@@ -147,7 +147,7 @@ class Articles extends Component {
                        {/* {article.snippet}<br/> */}
                        Published On: {article.date}
                        
-             <DeleteBtn onClick={() => this.Deleted({id: article._id} )}/>
+             <DeleteBtn onClick={() => this.Deleted(article._id)}/>
 
                  {/* <SaveBtn onClick={() => this.Saved({
                  title: article.headline.main,
